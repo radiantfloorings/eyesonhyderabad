@@ -209,9 +209,16 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
     })
   })
   .then(() => {
-    alert("Enquiry Sent Successfully!");
-    this.reset();
-  })
+
+  // Track successful enquiry
+  gtag('event', 'generate_lead', {
+    'event_category': 'Contact Form',
+    'event_label': 'Website Enquiry'
+  });
+
+  alert("Enquiry Sent Successfully!");
+  this.reset();
+})
   .catch(() => {
     alert("Error sending enquiry");
   });
